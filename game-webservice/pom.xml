@@ -6,7 +6,25 @@
 
     <groupId>com.anup.gamewebservice</groupId>
     <artifactId>game-webservice</artifactId>
-    <version>1.0.0.0</version>
+    <version>1.0.0.5</version>
+    <packaging>war</packaging>
 
-    
+    <build>
+        <finalName>game_rating</finalName>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>2.22.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-multipart</artifactId>
+            <version>2.2</version>
+        </dependency>
+    </dependencies>
+
 </project>
