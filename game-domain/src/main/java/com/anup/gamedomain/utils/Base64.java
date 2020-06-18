@@ -1,4 +1,4 @@
-package com.anup.gamewebservice.utils;
+package com.anup.gamedomain.utils;
 
 import java.util.Arrays;
 

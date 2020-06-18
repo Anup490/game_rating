@@ -1,4 +1,4 @@
-package com.anup.gamewebservice.utils;
+package com.anup.gamedomain.utils;
 
 public class StringUtils {
 
@@ -8,6 +8,14 @@ public class StringUtils {
 
     public static boolean isBlank(String string){
         return (string == null) || string.trim().equalsIgnoreCase("");
+    }
+
+    public static int toInteger(String string){
+        try{
+            return Integer.parseInt(string);
+        }catch (NumberFormatException e){
+            return -1;
+        }
     }
 
 }

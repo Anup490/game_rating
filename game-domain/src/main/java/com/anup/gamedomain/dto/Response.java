@@ -1,4 +1,4 @@
-package com.anup.gamewebservice.dto;
+package com.anup.gamedomain.dto;
 
 public class Response {
 

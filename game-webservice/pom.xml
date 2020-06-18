@@ -10,7 +10,7 @@
     <packaging>war</packaging>
 
     <build>
-        <finalName>game_rating</finalName>
+        <finalName>game-webservice</finalName>
     </build>
 
     <dependencies>
@@ -24,6 +24,18 @@
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-multipart</artifactId>
             <version>2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.ejb</groupId>
+            <artifactId>javax.ejb-api</artifactId>
+            <version>3.2.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.anup.gamedomain</groupId>
+            <artifactId>game-domain</artifactId>
+            <version>1.0.0.1</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
