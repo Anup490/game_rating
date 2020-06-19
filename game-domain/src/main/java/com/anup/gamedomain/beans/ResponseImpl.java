@@ -1,14 +1,16 @@
-package com.anup.gamedomain.dto;
+package com.anup.gamedomain.beans;
 
-public class Response {
+import com.anup.gamedomain.api.Response;
+
+class ResponseImpl implements Response {
 
     private int code;
     private String message;
     private Object data;
 
-    public Response(){}
+    public ResponseImpl(){}
 
-    public Response(int code, String message, Object data){
+    public ResponseImpl(int code, String message, Object data){
         this.code = code;
         this.message = message;
         this.data = data;

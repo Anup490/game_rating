@@ -1,19 +1,20 @@
-package com.anup.gamedomain.dto;
+package com.anup.gamewebservice.dto;
 
+import com.anup.gamedomain.api.Game;
 import com.anup.gamedomain.utils.StringUtils;
 
 import java.io.InputStream;
 
-public class Game {
+public class GameImpl implements Game {
 
     private String name;
     private String description;
     private int rating;
     private InputStream photo;
 
-    private Game(){}
+    private GameImpl(){}
 
-    private Game(Builder builder){
+    private GameImpl(Builder builder){
         this.name = builder.name;
         this.description = builder.description;
         this.rating = builder.rating;
@@ -78,8 +79,8 @@ public class Game {
             return this;
         }
 
-        public Game build(){
-            return new Game(this);
+        public GameImpl build(){
+            return new GameImpl(this);
         }
 
     }
