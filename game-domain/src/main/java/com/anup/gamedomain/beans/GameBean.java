@@ -19,17 +19,16 @@ public class GameBean {
             return new GameResponseImpl(202,"Description is blank",null);
         }else if(game.getRating() == -1){
             return new GameResponseImpl(202,"Rating is blank",null);
-        }else if(hasNoContent(game.getPhoto())){
+        }else if(hasNoContent(game.getBuffer(), game.getPhoto())){
             return new GameResponseImpl(202,"No file present",null);
         }else{
             return new GameResponseImpl(200,"Success",null);
         }
     }
 
-    private boolean hasNoContent(InputStream inputStream){
+    private boolean hasNoContent(byte[] buffer, InputStream inputStream){
         try {
-            byte[] content = new byte[1024];
-            return inputStream.read(content) == -1;
+            return inputStream.read(buffer) == -1;
         } catch (Exception e) {
             return true;
         }

@@ -12,4 +12,6 @@ public interface GameRequest {
 
     InputStream getPhoto();
 
+    byte[] getBuffer();
+
 }

@@ -11,6 +11,7 @@ public class GameRequestImpl implements GameRequest {
     private String description;
     private int rating;
     private InputStream photo;
+    private byte[] buffer;
 
     private GameRequestImpl(){}
 
@@ -19,6 +20,7 @@ public class GameRequestImpl implements GameRequest {
         this.description = builder.description;
         this.rating = builder.rating;
         this.photo = builder.photo;
+        this.buffer = new byte[1024];
     }
 
     public String getName() {
@@ -47,6 +49,10 @@ public class GameRequestImpl implements GameRequest {
 
     public InputStream getPhoto() {
         return photo;
+    }
+
+    public byte[] getBuffer() {
+        return buffer;
     }
 
     public void setPhoto(InputStream photo) {
