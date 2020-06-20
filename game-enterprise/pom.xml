@@ -4,9 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>com.anup</groupId>
+        <artifactId>super</artifactId>
+        <version>1</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
     <groupId>com.anup.gameenterprise</groupId>
     <artifactId>game-enterprise</artifactId>
-    <version>1.0.0.0</version>
+    <version>${game-enterprise-version}</version>
     <packaging>ear</packaging>
 
     <build>
@@ -42,13 +49,12 @@
         <dependency>
             <groupId>com.anup.gamewebservice</groupId>
             <artifactId>game-webservice</artifactId>
-            <version>1.0.0.5</version>
+            <version>${game-web-service-version}</version>
             <type>war</type>
         </dependency>
         <dependency>
             <groupId>com.anup.gamedomain</groupId>
             <artifactId>game-domain</artifactId>
-            <version>1.0.0.1</version>
             <type>ejb</type>
         </dependency>
     </dependencies>
