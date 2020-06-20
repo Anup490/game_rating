@@ -2,7 +2,7 @@ package com.anup.gamedomain.api;
 
 import java.io.InputStream;
 
-public interface Game {
+public interface GameRequest {
 
     String getName();
 

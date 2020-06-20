@@ -3,3 +3,4 @@
 /.idea/
 /game-domain/target/
 /game-webservice/target/
+/game-enterprise/target/

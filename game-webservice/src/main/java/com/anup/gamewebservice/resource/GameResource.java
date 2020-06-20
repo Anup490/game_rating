@@ -1,8 +1,8 @@
 package com.anup.gamewebservice.resource;
 
-import com.anup.gamedomain.api.Response;
 import com.anup.gamedomain.beans.GameBean;
-import com.anup.gamewebservice.dto.GameImpl;
+import com.anup.gamewebservice.dto.GameRequestImpl;
+import com.anup.gamewebservice.dto.Response;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
@@ -29,12 +29,12 @@ public class GameResource {
                                    @FormDataParam("rating") String rating,
                                    @FormDataParam("photo") InputStream inputStream,
                                    @FormDataParam("photo") FormDataContentDisposition contentDisposition){
-        return bean.processGameData(new GameImpl.Builder()
+        return new Response(bean.processGameData(new GameRequestImpl.Builder()
                 .setName(name)
                 .setDescription(desc)
                 .setRating(rating)
                 .setPhoto(inputStream)
-                .build());
+                .build()));
     }
 
 }
