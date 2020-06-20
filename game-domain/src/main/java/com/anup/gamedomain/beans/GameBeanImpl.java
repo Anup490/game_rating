@@ -1,16 +1,15 @@
 package com.anup.gamedomain.beans;
 
+import com.anup.gamedomain.api.GameBean;
 import com.anup.gamedomain.api.GameRequest;
 import com.anup.gamedomain.api.GameResponse;
 import com.anup.gamedomain.utils.StringUtils;
 
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import java.io.InputStream;
 
-@LocalBean
 @Stateless
-public class GameBean {
+public class GameBeanImpl implements GameBean {
 
     public GameResponse processGameData(GameRequest game){
         if(StringUtils.isBlank(game.getName())){

@@ -1,5 +1,6 @@
 package com.anup.gamedomain.beans;
 
+import com.anup.gamedomain.api.GameBean;
 import com.anup.gamedomain.api.GameRequest;
 import com.anup.gamedomain.api.GameResponse;
 import org.junit.After;
@@ -25,7 +26,7 @@ public class GameBeanTest {
     public void setup() throws IOException {
         MockitoAnnotations.initMocks(this);
         buffer = new byte[1];
-        gameBean = new GameBean();
+        gameBean = new GameBeanImpl();
 
         Mockito.when(mockInputStream.read(buffer)).thenReturn(100);
         Mockito.when(mockGameRequest.getName()).thenReturn("Anup");

@@ -1,6 +1,6 @@
 package com.anup.gamewebservice.resource;
 
-import com.anup.gamedomain.beans.GameBean;
+import com.anup.gamedomain.api.GameBean;
 import com.anup.gamewebservice.dto.GameRequestImpl;
 import com.anup.gamewebservice.dto.Response;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
