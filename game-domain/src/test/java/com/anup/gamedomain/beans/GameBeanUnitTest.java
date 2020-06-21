@@ -14,7 +14,7 @@ import org.mockito.MockitoAnnotations;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class GameBeanTest {
+public class GameBeanUnitTest {
 
     @Mock GameRequest mockGameRequest;
     @Mock InputStream mockInputStream;
