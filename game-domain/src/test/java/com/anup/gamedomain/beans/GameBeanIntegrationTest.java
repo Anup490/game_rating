@@ -21,7 +21,7 @@ public class GameBeanIntegrationTest {
     @Deployment
     public static JavaArchive createArchive(){
         return ShrinkWrap.create(JavaArchive.class, "game-domain.jar")
-                .addClasses(GameBeanImpl.class, GameResponseImpl.class, StringUtils.class);
+                .addClasses(GameBean.class,GameBeanImpl.class, GameResponseImpl.class, StringUtils.class);
     }
 
     @EJB
