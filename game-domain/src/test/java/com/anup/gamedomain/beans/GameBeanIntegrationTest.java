@@ -3,8 +3,10 @@ package com.anup.gamedomain.beans;
 import com.anup.gamedomain.api.GameBean;
 import com.anup.gamedomain.api.GameRequest;
 import com.anup.gamedomain.api.GameResponse;
+import com.anup.gamedomain.core.GameCore;
+import com.anup.gamedomain.core.GameEntity;
+import com.anup.gamedomain.core.GameResponseImpl;
 import com.anup.gamedomain.utils.StringUtils;
-
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -13,7 +15,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.ejb.EJB;
-import java.io.InputStream;
 
 @RunWith(Arquillian.class)
 public class GameBeanIntegrationTest {
@@ -21,7 +22,9 @@ public class GameBeanIntegrationTest {
     @Deployment
     public static JavaArchive createArchive(){
         return ShrinkWrap.create(JavaArchive.class, "game-domain.jar")
-                .addClasses(GameRequest.class, GameResponse.class, GameBean.class,GameBeanImpl.class, GameResponseImpl.class, StringUtils.class);
+                .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
+                .addClasses(GameRequest.class, GameResponse.class, GameBean.class, GameBeanImpl.class, GameCore.class
+                        , GameResponseImpl.class, GameEntity.class, StringUtils.class);
     }
 
     @EJB
@@ -48,12 +51,8 @@ public class GameBeanIntegrationTest {
                 return 80;
             }
 
-            public InputStream getPhoto() {
-                return null;
-            }
-
-            public byte[] getBuffer() {
-                return new byte[0];
+            public byte[] getPhoto() {
+                return "new byte[0]".getBytes();
             }
         };
     }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="GamePersistenceUnit" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/GamePool</jta-data-source>
+        <class>com.anup.gamedomain.core.GameEntity</class>
+    </persistence-unit>
+</persistence>

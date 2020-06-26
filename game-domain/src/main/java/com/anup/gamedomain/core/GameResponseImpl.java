@@ -1,8 +1,8 @@
-package com.anup.gamedomain.beans;
+package com.anup.gamedomain.core;
 
 import com.anup.gamedomain.api.GameResponse;
 
-class GameResponseImpl implements GameResponse {
+public class GameResponseImpl implements GameResponse {
 
     private int code;
     private String message;
