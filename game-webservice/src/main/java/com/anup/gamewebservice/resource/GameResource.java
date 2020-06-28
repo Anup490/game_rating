@@ -1,7 +1,6 @@
 package com.anup.gamewebservice.resource;
 
 import com.anup.gamedomain.api.GameBean;
-import com.anup.gamewebservice.dto.GameRequestImpl;
 import com.anup.gamewebservice.dto.Response;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
@@ -17,8 +16,12 @@ import java.io.InputStream;
 @Path("/game")
 public class GameResource {
 
-    @EJB
-    private GameBean bean;
+    @EJB private GameBean bean;
+    private GameController controller;
+
+    public GameResource(){
+        controller = new GameController(bean);
+    }
 
     @POST
     @Path("/insert")
@@ -29,12 +32,7 @@ public class GameResource {
                                    @FormDataParam("rating") String rating,
                                    @FormDataParam("photo") InputStream inputStream,
                                    @FormDataParam("photo") FormDataContentDisposition contentDisposition){
-        return new Response(bean.processGameData(new GameRequestImpl.Builder()
-                .setName(name)
-                .setDescription(desc)
-                .setRating(rating)
-                .setPhoto(inputStream)
-                .build()));
+        return controller.insertGame(name,desc,rating,inputStream,contentDisposition);
     }
 
 }

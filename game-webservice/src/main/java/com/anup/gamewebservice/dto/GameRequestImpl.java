@@ -3,9 +3,6 @@ package com.anup.gamewebservice.dto;
 import com.anup.gamedomain.api.GameRequest;
 import com.anup.gamedomain.utils.StringUtils;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 public class GameRequestImpl implements GameRequest {
 
     private String name;
@@ -19,7 +16,7 @@ public class GameRequestImpl implements GameRequest {
         this.name = builder.name;
         this.description = builder.description;
         this.rating = builder.rating;
-        this.photo = toBytes(new byte[1024], builder.photo);
+        this.photo = builder.photo;
     }
 
     public String getName() {
@@ -38,26 +35,11 @@ public class GameRequestImpl implements GameRequest {
         return photo;
     }
 
-    private byte[] toBytes(byte[] buffer, InputStream inputStream) {
-        try{
-            StringBuilder stringBuilder = new StringBuilder();
-            while (inputStream.read(buffer) > -1){
-                stringBuilder.append(new String(buffer));
-            }
-            if(StringUtils.isBlank(stringBuilder.toString())){
-                return null;
-            }
-            return stringBuilder.toString().getBytes();
-        }catch (IOException e){
-            return null;
-        }
-    }
-
     public static class Builder{
         String name;
         String description;
         int rating;
-        InputStream photo;
+        byte[] photo;
 
         public Builder setName(String name) {
             this.name = name;
@@ -74,7 +56,7 @@ public class GameRequestImpl implements GameRequest {
             return this;
         }
 
-        public Builder setPhoto(InputStream photo) {
+        public Builder setPhoto(byte[] photo) {
             this.photo = photo;
             return this;
         }

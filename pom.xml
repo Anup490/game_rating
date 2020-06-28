@@ -13,6 +13,8 @@
         <game-web-service-version>1.0.0.9</game-web-service-version>
         <game-domain-version>1.0.0.5</game-domain-version>
         <game-enterprise-version>1.0.0.3</game-enterprise-version>
+        <junit-version>4.13</junit-version>
+        <mockito-version>1.10.19</mockito-version>
     </properties>
 
     <dependencyManagement>
@@ -22,6 +24,18 @@
                 <artifactId>game-domain</artifactId>
                 <version>${game-domain-version}</version>
                 <type>ejb</type>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit-version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>${mockito-version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -6,25 +6,22 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import javax.persistence.EntityManager;
 
-public class GameCoreTest {
+public class GameCoreUnitTest {
 
-    @Mock EntityManager mockEntityManager;
     @Mock GameRequest mockGameRequest;
-
-    private GameCore gameCore;
+    @Mock EntityManager mockEntityManager;
+    @InjectMocks GameCore gameCore;
 
     @Before
     public void setup(){
         MockitoAnnotations.initMocks(this);
-
-        gameCore = new GameCore(mockEntityManager);
-
         Mockito.when(mockGameRequest.getName()).thenReturn("Anup");
         Mockito.when(mockGameRequest.getDescription()).thenReturn("description");
         Mockito.when(mockGameRequest.getRating()).thenReturn(99);
