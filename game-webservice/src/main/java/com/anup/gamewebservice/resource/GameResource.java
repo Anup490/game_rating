@@ -7,6 +7,7 @@ import com.anup.gamewebservice.utils.FileUtils;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
+import javax.annotation.security.RunAs;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -16,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 import java.io.InputStream;
 
 @Path("/game")
+@RunAs("developer")
 public class GameResource {
 
     @EJB private GameBean bean;

@@ -10,9 +10,9 @@
     <packaging>pom</packaging>
 
     <properties>
-        <game-web-service-version>1.0.0.9</game-web-service-version>
-        <game-domain-version>1.0.0.5</game-domain-version>
-        <game-enterprise-version>1.0.0.3</game-enterprise-version>
+        <game-web-service-version>1.0.0.11</game-web-service-version>
+        <game-domain-version>1.0.0.7</game-domain-version>
+        <game-enterprise-version>1.0.0.5</game-enterprise-version>
         <junit-version>4.13</junit-version>
         <mockito-version>1.10.19</mockito-version>
     </properties>

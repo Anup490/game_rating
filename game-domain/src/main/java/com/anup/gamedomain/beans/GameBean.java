@@ -7,6 +7,7 @@ import com.anup.gamedomain.core.GameCoreImpl;
 import com.anup.gamedomain.core.GameValidator;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -14,6 +15,7 @@ import javax.persistence.PersistenceContext;
 
 @Stateless
 @LocalBean
+@RolesAllowed("developer")
 public class GameBean {
 
     @PersistenceContext(unitName = "GamePersistenceUnit")
