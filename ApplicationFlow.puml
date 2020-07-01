@@ -1,0 +1,20 @@
+@startuml
+start;
+->client calls via http;
+:GameResource;
+->delegates request to bean;
+:GameBean;
+->receives request from GameResource
+and EntityManager from container;
+:GameCore;
+->calls validator to validate request;
+:GameValidator;
+if(is valid?) then
+    ->save to database;
+    :EntityManager;
+    ->(Yes) send success message to client;
+stop;
+else
+    ->(No) send error message to client;
+stop;
+@enduml
