@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.anup</groupId>
+        <artifactId>super</artifactId>
+        <version>1</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <groupId>com.anup.gameenterprise</groupId>
+    <artifactId>game-enterprise</artifactId>
+    <version>${game-enterprise-version}</version>
+    <packaging>ear</packaging>
+
+    <build>
+        <finalName>game-rating-app</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <modules>
+                        <webModule>
+                            <groupId>com.anup.gamewebservice</groupId>
+                            <artifactId>game-webservice</artifactId>
+                            <bundleFileName>game-webservice</bundleFileName>
+                            <contextRoot>game-rating-app</contextRoot>
+                            <unpack>true</unpack>
+                        </webModule>
+                        <ejbModule>
+                            <groupId>com.anup.gamedomain</groupId>
+                            <artifactId>game-domain</artifactId>
+                            <bundleFileName>game-domain</bundleFileName>
+                            <unpack>true</unpack>
+                        </ejbModule>
+                        <displayName>game-rating-app</displayName>
+                        <generateApplicationXml>true</generateApplicationXml>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.anup.gamewebservice</groupId>
+            <artifactId>game-webservice</artifactId>
+            <version>${game-web-service-version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>com.anup.gamedomain</groupId>
+            <artifactId>game-domain</artifactId>
+            <type>ejb</type>
+        </dependency>
+    </dependencies>
+
+</project>

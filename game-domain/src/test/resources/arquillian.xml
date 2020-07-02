@@ -1,0 +1,30 @@
+<arquillian xmlns="http://jboss.org/schema/arquillian"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+
+    <engine>
+        <property name="deploymentExportPath">target</property>
+    </engine>
+
+    <container qualifier="glassfish-remote">
+        <configuration>
+            <property name="remoteServerAddress">localhost</property>
+            <property name="remoteServerAdminPort">4848</property>
+            <property name="remoteServerHttpPort">8080</property>
+            <property name="adminUser">admin</property>
+            <property name="adminPassword">admin</property>
+        </configuration>
+    </container>
+
+    <container qualifier="glassfish-managed">
+        <configuration>
+            <property name="remoteServerAddress">localhost</property>
+            <property name="remoteServerAdminPort">4848</property>
+            <property name="remoteServerHttpPort">8080</property>
+            <property name="adminUser">admin</property>
+            <property name="adminPassword">admin</property>
+            <property name="glassFishHome">C:\Program Files\GlassFish\glassfish5</property>
+        </configuration>
+    </container>
+
+</arquillian>

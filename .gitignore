@@ -1,4 +1,6 @@
 # Project exclude paths
 /out/
 /.idea/
+/game-domain/target/
 /game-webservice/target/
+/game-enterprise/target/
