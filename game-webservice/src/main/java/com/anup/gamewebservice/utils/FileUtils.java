@@ -1,6 +1,6 @@
 package com.anup.gamewebservice.utils;
 
-import com.anup.gamedomain.utils.StringUtils;
+import com.anup.gamecore.utils.StringUtils;
 
 import java.io.InputStream;
 

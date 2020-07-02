@@ -5,14 +5,15 @@ start;
 ->delegates request to bean;
 :GameBean;
 ->receives request from GameResource
-and EntityManager from container;
+and instantiates GamePersistor;
 :GameCore;
 ->calls validator to validate request;
 :GameValidator;
 if(is valid?) then
     ->save to database;
-    :EntityManager;
-    ->(Yes) send success message to client;
+    :GamePersistor;
+    ->(Yes) save to database and
+    send success message to client;
 stop;
 else
     ->(No) send error message to client;

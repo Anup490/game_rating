@@ -1,6 +1,6 @@
 package com.anup.gamewebservice.dto;
 
-import com.anup.gamedomain.api.GameResponse;
+import com.anup.gamecore.dto.GameResponse;
 
 public class Response {
 

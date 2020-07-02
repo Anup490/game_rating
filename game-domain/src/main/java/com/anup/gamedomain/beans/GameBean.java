@@ -1,10 +1,11 @@
 package com.anup.gamedomain.beans;
 
-import com.anup.gamedomain.api.GameRequest;
-import com.anup.gamedomain.api.GameResponse;
-import com.anup.gamedomain.core.GameCore;
-import com.anup.gamedomain.core.GameCoreImpl;
-import com.anup.gamedomain.core.GameValidator;
+import com.anup.gamecore.core.GameCore;
+import com.anup.gamecore.dto.GameRequest;
+import com.anup.gamecore.dto.GameResponse;
+import com.anup.gamecore.core.GameCoreImpl;
+import com.anup.gamecore.validation.GameValidatorImpl;
+import com.anup.gamedomain.persistance.JPAPersistor;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.security.RolesAllowed;
@@ -24,7 +25,7 @@ public class GameBean {
 
     @PostConstruct
     public void postConstruct(){
-        core = new GameCoreImpl(entityManager, new GameValidator());
+        core = new GameCoreImpl(new JPAPersistor(entityManager), new GameValidatorImpl());
     }
 
     public GameResponse insertGameData(GameRequest gameRequest){

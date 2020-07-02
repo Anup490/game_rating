@@ -1,10 +1,16 @@
 package com.anup.gamedomain.beans;
 
-import com.anup.gamedomain.core.*;
-import com.anup.gamedomain.api.GameRequest;
-import com.anup.gamedomain.api.GameResponse;
-import com.anup.gamedomain.enums.ValidationStatus;
-import com.anup.gamedomain.utils.StringUtils;
+import com.anup.gamecore.core.GameCore;
+import com.anup.gamecore.core.GameCoreImpl;
+import com.anup.gamecore.dto.GameRequest;
+import com.anup.gamecore.dto.GameResponse;
+import com.anup.gamecore.persistance.GamePersistor;
+import com.anup.gamecore.validation.GameValidator;
+import com.anup.gamecore.validation.GameValidatorImpl;
+import com.anup.gamecore.validation.ValidationStatus;
+import com.anup.gamecore.utils.StringUtils;
+import com.anup.gamedomain.persistance.GameEntity;
+import com.anup.gamedomain.persistance.JPAPersistor;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -22,9 +28,9 @@ public class GameBeanIntegrationTest {
     public static JavaArchive createArchive(){
         return ShrinkWrap.create(JavaArchive.class, "game-domain.jar")
                 .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
-                .addClasses(GameRequest.class, GameResponse.class, GameCore.class, GameBean.class, GameCoreImpl.class,
-                        GameValidator.class, ValidationStatus.class, GameResponseImpl.class, GameEntity.class,
-                        StringUtils.class);
+                .addClasses(GameCore.class, GameCoreImpl.class, GameRequest.class, GameResponse.class
+                        , GamePersistor.class, GameValidator.class, GameValidatorImpl.class, ValidationStatus.class
+                        , GameBean.class, JPAPersistor.class, GameEntity.class, StringUtils.class);
     }
 
     @EJB
@@ -36,7 +42,7 @@ public class GameBeanIntegrationTest {
 
         GameResponse responseActual = gameBean.insertGameData(request);
 
-        Assert.assertTrue(isSame(new GameResponseImpl(200,"Success",null),responseActual));
+        Assert.assertTrue(isSame(new GameResponse(200,"Success",null),responseActual));
     }
 
     @Test
@@ -49,27 +55,16 @@ public class GameBeanIntegrationTest {
         final GameEntity entity = (GameEntity) responseActualFetch.getData();
         entity.setDescription("yo ho naya description");
 
-        GameRequest updateRequest = new GameRequest() {
-            public String getName() {
-                return entity.getName();
-            }
-
-            public String getDescription() {
-                return "yo ho naya description";
-            }
-
-            public int getRating() {
-                return entity.getRating();
-            }
-
-            public byte[] getPhoto() {
-                return entity.getPhoto();
-            }
-        };
+        GameRequest updateRequest = new GameRequest.Builder()
+                .setName(entity.getName())
+                .setDescription("yo ho naya description")
+                .setRating(""+entity.getRating())
+                .setPhoto(entity.getPhoto())
+                .build();
 
         GameResponse responseActualUpdate = gameBean.updateGameDataByName(updateRequest);
 
-        Assert.assertTrue(isSame(new GameResponseImpl(200,"Success",null),responseActualUpdate));
+        Assert.assertTrue(isSame(new GameResponse(200,"Success",null),responseActualUpdate));
     }
 
     private boolean isSame(GameResponse response1, GameResponse response2){
@@ -79,23 +74,12 @@ public class GameBeanIntegrationTest {
     }
 
     private GameRequest prepareRequest(){
-        return new GameRequest() {
-            public String getName() {
-                return "Anup Raj";
-            }
-
-            public String getDescription() {
-                return "arko description";
-            }
-
-            public int getRating() {
-                return 99;
-            }
-
-            public byte[] getPhoto() {
-                return "new byte[1]".getBytes();
-            }
-        };
+        return new GameRequest.Builder()
+                .setName("Anup Raj")
+                .setDescription("arko description")
+                .setRating("99")
+                .setPhoto("new byte[1]".getBytes())
+                .build();
     }
 
 }

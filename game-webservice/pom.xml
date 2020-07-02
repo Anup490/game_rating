@@ -22,6 +22,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.anup.gamecore</groupId>
+            <artifactId>game-core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet</artifactId>
             <version>2.22.2</version>

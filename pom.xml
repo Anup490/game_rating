@@ -13,6 +13,7 @@
         <game-web-service-version>1.0.0.11</game-web-service-version>
         <game-domain-version>1.0.0.7</game-domain-version>
         <game-enterprise-version>1.0.0.5</game-enterprise-version>
+        <game-core-version>1.0.0.0</game-core-version>
         <junit-version>4.13</junit-version>
         <mockito-version>1.10.19</mockito-version>
     </properties>
@@ -24,6 +25,11 @@
                 <artifactId>game-domain</artifactId>
                 <version>${game-domain-version}</version>
                 <type>ejb</type>
+            </dependency>
+            <dependency>
+                <groupId>com.anup.gamecore</groupId>
+                <artifactId>game-core</artifactId>
+                <version>${game-core-version}</version>
             </dependency>
             <dependency>
                 <groupId>junit</groupId>
